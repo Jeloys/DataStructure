@@ -53,7 +53,7 @@ class Solution {
 }
 ```
 
-## 876.求链表中间结点
+# 876.求链表中间结点
 
 ```java
 /**
@@ -83,7 +83,7 @@ class Solution {
 }
 ```
 
-## 1.两数之和
+# 1.两数之和
 先遍历一遍数组，使用HashMap存储值，然后再遍历一遍数组，看target-nums[i]是否在Hashmap中。
 ```java
 public class Solution {
@@ -107,7 +107,7 @@ public class Solution {
 ```
 
 
-## 15.三数之和
+# 15.三数之和
 给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
 ```java
 public class Solution {
@@ -185,7 +185,7 @@ public class Solution {
 }
 ```
 
-## 169.求众数
+# 169.求众数
 
 **方法一**使用HashMap，时间复杂度和空间复杂度都为O（n）
 ```
@@ -226,7 +226,7 @@ public class Solution {
     }
 }
 ```
-## 141.环形链表
+# 141.环形链表
 ```java
 /**
  * Definition for singly-linked list.
@@ -255,7 +255,7 @@ public class Solution {
 }
 ```
 
-## 41.缺失的第一个正数
+# 41.缺失的第一个正数
 ```java
 class Solution {
 	public int firstMissingPositive(int[] nums) {
@@ -281,7 +281,7 @@ class Solution {
 }
 ```
 
-## 23.合并K个排序链表
+# 23.合并K个排序链表
 分而治之，两两合并
 ```java
 /**
