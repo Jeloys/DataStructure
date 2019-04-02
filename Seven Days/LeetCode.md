@@ -254,3 +254,78 @@ public class Solution {
     }
 }
 ```
+
+## 41.缺失的第一个正数
+```java
+class Solution {
+	public int firstMissingPositive(int[] nums) {
+		for (int i = 0; i < nums.length;) {
+			if (nums[i] > 0 && nums[i] <= nums.length && nums[i] != nums[nums[i] - 1]) {
+			// 确定nums[i]的值对应的下标不越界，同时排除num[i]本身位置正确或者nums[i]应该放入的位置nums[i]-1原本就是nums[i](如[1,1])
+
+				int index = nums[i];//
+				nums[i] = nums[index - 1];
+				nums[index - 1] = index;
+				// 换位置之后需要继续判断换过来的值是否在对的位置上，因此不能i++;
+			} else {
+				i++;
+			}
+		}
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != i + 1) {
+				return i + 1;
+			}
+		}
+		return nums.length + 1;
+	}
+}
+```
+
+## 23.合并K个排序链表
+分而治之，两两合并
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        while(l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                cur.next = l1;
+                l1 = l1.next;
+            }else{
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = l1 != null ? l1:l2;
+        return dummy.next;
+    }
+
+    public ListNode mergeHelper(ListNode[] lists, int low, int high) {
+        if (low < high) {
+            int mid = (low + high) / 2;
+            ListNode leftList = mergeHelper(lists, low, mid);
+            ListNode rightList = mergeHelper(lists, mid + 1, high);
+            return mergeTwoLists(leftList, rightList);
+        }
+        return lists[low];
+    }
+
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return mergeHelper(lists, 0, lists.length - 1);
+    }
+}
+```
